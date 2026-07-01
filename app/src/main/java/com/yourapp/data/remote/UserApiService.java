@@ -19,6 +19,9 @@ public interface UserApiService {
     @PUT("users/me")
     Call<ApiResponse<User>> updateProfile(@Body Map<String, String> body);
 
+    @PUT("users/me/fcm-token")
+    Call<ApiResponse<Map<String, Object>>> updateFcmToken(@Body Map<String, String> body);
+
     @GET("users/search")
     Call<ApiResponse<List<User>>> searchUsers(@Query("q") String query);
 

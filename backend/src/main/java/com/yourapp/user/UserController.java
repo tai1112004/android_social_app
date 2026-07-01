@@ -91,6 +91,19 @@ public class UserController {
         return ResponseEntity.ok(ok("OK", profile));
     }
 
+    @PutMapping("/me/fcm-token")
+    public ResponseEntity<Map<String, Object>> updateFcmToken(@RequestBody Map<String, String> body) {
+        User current = currentUser();
+        String fcmToken = normalize(body != null ? body.getOrDefault("fcmToken", body.get("token")) : null);
+        current.setFcmToken(fcmToken);
+        current.setUpdatedAt(LocalDateTime.now());
+        User saved = userRepository.save(current);
+        Map<String, Object> data = new HashMap<>();
+        data.put("fcmToken", saved.getFcmToken());
+        data.put("updatedAt", saved.getUpdatedAt());
+        return ResponseEntity.ok(ok("FCM token updated", data));
+    }
+
     private void applyProfileUpdates(User current, Map<String, String> body) {
         String displayName = body.get("displayName");
         String avatarUrl = body.get("avatarUrl");

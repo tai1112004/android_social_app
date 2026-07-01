@@ -45,7 +45,12 @@ public class NotificationsActivity extends AppCompatActivity {
             return;
         }
 
-        notificationStore = new NotificationStore(this);
+        long currentUserId = tokenManager.getUserId();
+        if (currentUserId > 0) {
+            notificationStore = new NotificationStore(this, currentUserId);
+        } else {
+            notificationStore = new NotificationStore(this, "username_" + tokenManager.getUsername());
+        }
         setupToolbar();
         setupViews();
         render();

@@ -25,6 +25,12 @@ spring:
 app:
   upload-dir: ${UPLOAD_DIR:uploads}
 
+cloudinary:
+  cloud-name: du9ru66mw
+  api-key: 453815286563816
+  api-secret: Je_J0fopIm7s7v-WDsZ0HJYjfwA
+  folder: social-app
+
 server:
   port: 8082
 

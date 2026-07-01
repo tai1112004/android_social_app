@@ -4,11 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public final class BackendConfig {
+    public enum Mode {
+        LOCAL,
+        DEPLOY
+    }
+
     private static final String PREFS_NAME = "backend_config";
     private static final String KEY_HOST = "backend_host";
+    private static final String KEY_MODE = "backend_mode";
     private static final String KEY_HOST_PROMPT_SHOWN = "host_prompt_shown";
     private static final String EMULATOR_HOST = "10.0.2.2";
     private static final String DEVICE_HOST = "127.0.0.1";
+    private static final String DEPLOY_BASE_URL = "https://80rp9lhs-8082.asse.devtunnels.ms/";
 
     private static volatile SharedPreferences prefs;
 
@@ -23,6 +30,55 @@ public final class BackendConfig {
                 }
             }
         }
+    }
+
+    public static Mode getMode() {
+        SharedPreferences localPrefs = prefs;
+        if (localPrefs == null) {
+            return Mode.LOCAL;
+        }
+        String value = localPrefs.getString(KEY_MODE, Mode.LOCAL.name());
+        try {
+            return Mode.valueOf(value);
+        } catch (IllegalArgumentException ex) {
+            return Mode.LOCAL;
+        }
+    }
+
+    public static void setMode(Mode mode) {
+        if (prefs == null || mode == null) {
+            return;
+        }
+        prefs.edit()
+                .putString(KEY_MODE, mode.name())
+                .putBoolean(KEY_HOST_PROMPT_SHOWN, true)
+                .apply();
+    }
+
+    public static boolean isDeployMode() {
+        return getMode() == Mode.DEPLOY;
+    }
+
+    public static String getBaseUrl() {
+        if (isDeployMode()) {
+            return DEPLOY_BASE_URL + "api/";
+        }
+        return "http://" + getHost() + ":8082/api/";
+    }
+
+    public static String getWsUrl() {
+        if (isDeployMode()) {
+            return DEPLOY_BASE_URL.replaceFirst("^https", "wss").replaceFirst("^http", "ws") + "ws";
+        }
+        return "ws://" + getHost() + ":8082/ws";
+    }
+
+    public static String getDisplayName() {
+        return isDeployMode() ? "Deploy" : "Local USB";
+    }
+
+    public static String getDeployBaseUrl() {
+        return DEPLOY_BASE_URL;
     }
 
     public static String getHost() {
@@ -61,6 +117,9 @@ public final class BackendConfig {
         SharedPreferences localPrefs = prefs;
         if (localPrefs == null) {
             return true;
+        }
+        if (getMode() == Mode.DEPLOY) {
+            return false;
         }
         String currentHost = localPrefs.getString(KEY_HOST, null);
         boolean promptShown = localPrefs.getBoolean(KEY_HOST_PROMPT_SHOWN, false);
@@ -120,7 +179,3 @@ public final class BackendConfig {
         return "127.0.0.1".equals(trimmed) || "10.0.2.2".equals(trimmed);
     }
 }
-
-
-
-

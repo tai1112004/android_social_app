@@ -3,7 +3,6 @@ package com.yourapp.ui.auth;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordInput;
     private Button loginButton;
     private Button registerButton;
-    private Button usbButton;
+    private Button backendModeButton;
     private ProgressBar progressBar;
     private AuthViewModel viewModel;
     private TokenManager tokenManager;
@@ -40,16 +39,17 @@ public class LoginActivity extends AppCompatActivity {
         usernameInput = findViewById(R.id.login_username);
         passwordInput = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
-        usbButton = findViewById(R.id.login_usb_button);
+        backendModeButton = findViewById(R.id.login_usb_button);
         registerButton = findViewById(R.id.login_register_link);
         progressBar = findViewById(R.id.login_progress);
 
         tokenManager = new TokenManager(this);
         loginButton.setEnabled(false);
+        updateBackendModeButton();
 
         loginButton.setOnClickListener(v -> performLogin());
         registerButton.setOnClickListener(v -> navigateToRegister());
-        usbButton.setOnClickListener(v -> verifyBackendAndInitialize());
+        backendModeButton.setOnClickListener(v -> showConnectionModeDialog(true));
 
         verifyBackendAndInitialize();
     }
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         RetrofitClient.reset();
         connectionCheckRunning = true;
         loginButton.setEnabled(false);
-        usbButton.setEnabled(false);
+        backendModeButton.setEnabled(false);
         registerButton.setEnabled(false);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -110,7 +110,8 @@ public class LoginActivity extends AppCompatActivity {
         observeAuthState();
         loginButton.setEnabled(true);
         registerButton.setEnabled(true);
-        usbButton.setEnabled(true);
+        backendModeButton.setEnabled(true);
+        updateBackendModeButton();
     }
 
     private void observeAuthState() {
@@ -120,11 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                 navigateToMain();
             } else if (state instanceof AuthViewModel.AuthUiState.Error) {
                 AuthViewModel.AuthUiState.Error error = (AuthViewModel.AuthUiState.Error) state;
-                if (error.message != null && error.message.contains("Kết nối USB bị mất")) {
-                    showUsbLostDialog(error.message);
-                } else {
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: " + error.message, Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: " + error.message, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
             progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
             loginButton.setEnabled(!isLoading && authLayerReady);
             registerButton.setEnabled(!isLoading);
-            usbButton.setEnabled(!isLoading);
+            backendModeButton.setEnabled(!isLoading);
         });
 
         viewModel.getErrorMessage().observe(this, errorMsg -> {
@@ -161,11 +158,50 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showConnectionModeDialog(boolean fromButton) {
+        String[] labels = new String[] {
+                "Deploy - " + BackendConfig.getDeployBaseUrl(),
+                "Local USB - 127.0.0.1:8082"
+        };
+        int checkedItem = BackendConfig.isDeployMode() ? 0 : 1;
+
+        new AlertDialog.Builder(this)
+                .setTitle("Chọn backend")
+                .setSingleChoiceItems(labels, checkedItem, (dialog, which) -> {
+                    BackendConfig.Mode selectedMode = which == 0
+                            ? BackendConfig.Mode.DEPLOY
+                            : BackendConfig.Mode.LOCAL;
+                    applyBackendMode(selectedMode);
+                    dialog.dismiss();
+                })
+                .setNegativeButton("Hủy", null)
+                .show();
+    }
+
+    private void applyBackendMode(BackendConfig.Mode mode) {
+        if (BackendConfig.getMode() == mode && authLayerReady) {
+            updateBackendModeButton();
+            return;
+        }
+        BackendConfig.setMode(mode);
+        if (mode == BackendConfig.Mode.LOCAL) {
+            BackendConfig.clearOverride();
+        }
+        authLayerReady = false;
+        viewModel = null;
+        RetrofitClient.reset();
+        updateBackendModeButton();
+        Toast.makeText(this, "Đang dùng backend: " + BackendConfig.getDisplayName(), Toast.LENGTH_SHORT).show();
         verifyBackendAndInitialize();
     }
 
+    private void updateBackendModeButton() {
+        if (backendModeButton != null) {
+            backendModeButton.setText("Backend: " + BackendConfig.getDisplayName());
+        }
+    }
+
     private void showLanHostDialog(String defaultHost) {
-        verifyBackendAndInitialize();
+        showConnectionModeDialog(true);
     }
 
     private void showUsbLostDialog(String message) {
@@ -173,11 +209,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleBackendUnreachable() {
-        Toast.makeText(this, "Cannot connect to backend", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Không kết nối được backend: " + BackendConfig.getDisplayName(), Toast.LENGTH_SHORT).show();
         authLayerReady = false;
         loginButton.setEnabled(false);
         registerButton.setEnabled(true);
-        usbButton.setEnabled(true);
+        backendModeButton.setEnabled(true);
+        updateBackendModeButton();
     }
 
     private void navigateToMain() {
@@ -192,10 +229,3 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
-
-
-
-
-
-

@@ -52,6 +52,9 @@ public class User {
     @Column(name = "phone", length = 30)
     private String phone;
 
+    @Column(name = "fcm_token", length = 500)
+    private String fcmToken;
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
@@ -163,6 +166,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 
     public LocalDateTime getCreatedAt() {

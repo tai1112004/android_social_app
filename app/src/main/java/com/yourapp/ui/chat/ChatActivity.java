@@ -1,7 +1,9 @@
 package com.yourapp.ui.chat;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -41,6 +43,7 @@ import com.yourapp.model.SendMessageRequest;
 import com.yourapp.network.RetrofitClient;
 import com.yourapp.realtime.ChatSocketClient;
 import com.yourapp.ui.auth.LoginActivity;
+import com.yourapp.ui.call.OutgoingCallActivity;
 import com.yourapp.util.ContentUriRequestBody;
 import com.yourapp.util.TokenManager;
 import okhttp3.MultipartBody;
@@ -49,6 +52,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity {
+    private static final int REQ_RECORD_AUDIO_CALL = 7101;
 
     public static final String EXTRA_CONVERSATION_ID = "conversation_id";
     public static final String EXTRA_CONVERSATION_NAME = "conversation_name";
@@ -101,8 +105,8 @@ public class ChatActivity extends AppCompatActivity {
 
         btnSend.setOnClickListener(v -> sendMessage());
         findViewById(R.id.btn_chat_info).setOnClickListener(v -> openChatInfo());
-        findViewById(R.id.btn_chat_call).setOnClickListener(v -> Toast.makeText(this, "Tinh nang goi thoai se bo sung sau", Toast.LENGTH_SHORT).show());
-        findViewById(R.id.btn_chat_video_call).setOnClickListener(v -> Toast.makeText(this, "Tinh nang goi video se bo sung sau", Toast.LENGTH_SHORT).show());
+        findViewById(R.id.btn_chat_call).setOnClickListener(v -> startAudioCall());
+        findViewById(R.id.btn_chat_video_call).setOnClickListener(v -> startAudioCall());
         findViewById(R.id.btn_cancel_reply).setOnClickListener(v -> clearReply());
         findViewById(R.id.btn_send_emoji).setOnClickListener(v -> Toast.makeText(this, "Sticker, file va location se bo sung sau", Toast.LENGTH_SHORT).show());
         findViewById(R.id.btn_send_image).setOnClickListener(v -> openMediaPicker("IMAGE"));
@@ -625,6 +629,25 @@ public class ChatActivity extends AppCompatActivity {
         return type.equals("IMAGE") ? ".jpg" : ".mp4";
     }
 
+    private void startAudioCall() {
+        Intent intent = new Intent(this, OutgoingCallActivity.class);
+        intent.putExtra(OutgoingCallActivity.EXTRA_CONVERSATION_ID, conversationId);
+        String title = ((android.widget.TextView) findViewById(R.id.tv_chat_title)).getText().toString();
+        intent.putExtra(OutgoingCallActivity.EXTRA_CONVERSATION_NAME, title);
+        startActivity(intent);
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQ_RECORD_AUDIO_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startAudioCall();
+            } else {
+                Toast.makeText(this, "Can quyen micro de goi", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     private void openChatInfo() {
         Intent intent = new Intent(this, ChatInfoActivity.class);
         intent.putExtra(ChatInfoActivity.EXTRA_CONVERSATION_ID, conversationId);
@@ -674,6 +697,12 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
 
 
 

@@ -13,13 +13,38 @@ import java.util.List;
 public class NotificationStore {
     private static final String PREFS_NAME = "app_notifications";
     private static final String KEY_NOTIFICATIONS = "notifications_json";
+    private static final String KEY_NOTIFICATIONS_PREFIX = "notifications_json_";
 
     private final SharedPreferences preferences;
     private final Gson gson = new Gson();
     private final Type listType = new TypeToken<List<StoredNotification>>() {}.getType();
+    private String storageKey;
 
     public NotificationStore(Context context) {
         this.preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        this.storageKey = KEY_NOTIFICATIONS;
+    }
+
+    public NotificationStore(Context context, long userId) {
+        this(context);
+        setUserId(userId);
+    }
+
+    public NotificationStore(Context context, String ownerKey) {
+        this(context);
+        setOwnerKey(ownerKey);
+    }
+
+    public synchronized void setUserId(long userId) {
+        if (userId > 0) {
+            storageKey = KEY_NOTIFICATIONS_PREFIX + "user_" + userId;
+        }
+    }
+
+    public synchronized void setOwnerKey(String ownerKey) {
+        if (ownerKey != null && !ownerKey.trim().isEmpty()) {
+            storageKey = KEY_NOTIFICATIONS_PREFIX + ownerKey.trim();
+        }
     }
 
     public synchronized List<StoredNotification> getAll() {
@@ -99,11 +124,11 @@ public class NotificationStore {
     }
 
     public synchronized void clear() {
-        preferences.edit().remove(KEY_NOTIFICATIONS).apply();
+        preferences.edit().remove(storageKey).apply();
     }
 
     private List<StoredNotification> readAll() {
-        String json = preferences.getString(KEY_NOTIFICATIONS, null);
+        String json = preferences.getString(storageKey, null);
         if (json == null || json.trim().isEmpty()) {
             return new ArrayList<>();
         }
@@ -112,7 +137,7 @@ public class NotificationStore {
     }
 
     private void save(List<StoredNotification> items) {
-        preferences.edit().putString(KEY_NOTIFICATIONS, gson.toJson(items)).apply();
+        preferences.edit().putString(storageKey, gson.toJson(items)).apply();
     }
 
     private List<StoredNotification> orderedCopy(List<StoredNotification> items) {
