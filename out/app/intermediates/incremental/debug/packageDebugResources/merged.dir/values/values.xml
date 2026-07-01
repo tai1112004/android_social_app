@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="ic_launcher_background">#FF6200EE</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="red_500">#FFF44336</color>
+    <color name="social_accent">#14B8A6</color>
+    <color name="social_accent_dark">#0F766E</color>
+    <color name="social_background">#FFEAF0F6</color>
+    <color name="social_blue">#2563EB</color>
+    <color name="social_blue_dark">#1D4ED8</color>
+    <color name="social_ink">#111827</color>
+    <color name="social_muted">#6B7280</color>
+    <color name="social_surface">#FFFFFFFF</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="comment_card_indent_reply">10dp</dimen>
+    <dimen name="comment_card_top_gap_normal">6dp</dimen>
+    <dimen name="comment_card_top_gap_reply">8dp</dimen>
+    <dimen name="comment_reply_block_padding_horizontal">10dp</dimen>
+    <dimen name="comment_reply_block_padding_vertical">8dp</dimen>
+    <dimen name="comment_reply_block_start">10dp</dimen>
+    <dimen name="comment_reply_tag_size">11sp</dimen>
+    <dimen name="comment_reply_text_size">12sp</dimen>
+    <string name="action_settings">Cài đặt</string>
+    <string name="app_name">Mạng xã hội</string>
+    <string name="cancel">Hủy</string>
+    <string name="email_hint">Email</string>
+    <string name="error">Lỗi</string>
+    <string name="loading">Đang tải...</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="ok">Đồng ý</string>
+    <string name="password_hint">Mật khẩu</string>
+    <string name="register_title">Đăng ký</string>
+    <string name="retry">Thử lại</string>
+    <string name="tab_chat">Tin nhắn</string>
+    <string name="tab_home">Trang chủ</string>
+    <string name="tab_profile">Hồ sơ</string>
+    <string name="username_hint">Tên đăng nhập</string>
+    <style name="Theme.SocialApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/social_blue</item>
+        <item name="colorPrimaryVariant">@color/social_blue_dark</item>
+        <item name="colorSecondary">@color/social_accent</item>
+        <item name="colorSecondaryVariant">@color/social_accent_dark</item>
+        <item name="colorError">@color/red_500</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:windowBackground">@color/social_background</item>
+        <item name="android:colorBackground">@color/social_background</item>
+        <item name="android:statusBarColor">@color/social_surface</item>
+        <item name="android:navigationBarColor">@color/social_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>

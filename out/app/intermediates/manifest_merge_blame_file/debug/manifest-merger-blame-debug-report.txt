@@ -1,0 +1,272 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.yourapp"
+4    android:versionCode="1"
+5    android:versionName="0.0.1" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Network Permissions -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:6:5-67
+12-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:7:22-76
+14
+15    <!-- Camera & Storage for Profile Picture -->
+16    <uses-permission android:name="android.permission.CAMERA" />
+16-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:10:5-65
+16-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:10:22-62
+17    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+17-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:11:5-80
+17-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:11:22-77
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:12:5-81
+18-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:12:22-78
+19    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+19-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:13:5-76
+19-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:13:22-73
+20    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+20-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:14:5-75
+20-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:14:22-72
+21
+22    <permission
+22-->[androidx.core:core:1.9.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+23        android:name="com.yourapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+23-->[androidx.core:core:1.9.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+24        android:protectionLevel="signature" />
+24-->[androidx.core:core:1.9.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+25
+26    <uses-permission android:name="com.yourapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+26-->[androidx.core:core:1.9.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+26-->[androidx.core:core:1.9.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+27
+28    <application
+28-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:16:5-94:19
+29        android:name="com.yourapp.SocialApp"
+29-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:17:9-34
+30        android:allowBackup="true"
+30-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:18:9-35
+31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+31-->[androidx.core:core:1.9.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\a309491863f1cad1388d82071cb60f8c\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+32        android:dataExtractionRules="@xml/data_extraction_rules"
+32-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:19:9-65
+33        android:debuggable="true"
+34        android:extractNativeLibs="false"
+35        android:fullBackupContent="@xml/backup_rules"
+35-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:20:9-54
+36        android:icon="@mipmap/ic_launcher"
+36-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:21:9-43
+37        android:label="@string/app_name"
+37-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:22:9-41
+38        android:roundIcon="@mipmap/ic_launcher_round"
+38-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:23:9-54
+39        android:supportsRtl="true"
+39-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:24:9-35
+40        android:theme="@style/Theme.SocialApp"
+40-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:25:9-47
+41        android:usesCleartextTraffic="true" >
+41-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:26:9-44
+42        <activity
+42-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:29:9-37:20
+43            android:name="com.yourapp.ui.auth.LoginActivity"
+43-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:30:13-50
+44            android:exported="true"
+44-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:31:13-36
+45            android:theme="@style/Theme.SocialApp" >
+45-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:32:13-51
+46            <intent-filter>
+46-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:33:13-36:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:34:17-69
+47-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:34:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:35:17-77
+49-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:35:27-74
+50            </intent-filter>
+51        </activity>
+52        <activity
+52-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:39:9-42:54
+53            android:name="com.yourapp.ui.auth.RegisterActivity"
+53-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:40:13-53
+54            android:exported="false"
+54-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:41:13-37
+55            android:theme="@style/Theme.SocialApp" />
+55-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:42:13-51
+56        <activity
+56-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:44:9-47:54
+57            android:name="com.yourapp.ui.home.HomeActivity"
+57-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:45:13-49
+58            android:exported="false"
+58-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:46:13-37
+59            android:theme="@style/Theme.SocialApp" />
+59-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:47:13-51
+60        <activity
+60-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:49:9-53:54
+61            android:name="com.yourapp.ui.chat.ChatActivity"
+61-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:50:13-49
+62            android:exported="false"
+62-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:51:13-37
+63            android:theme="@style/Theme.SocialApp"
+63-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:53:13-51
+64            android:windowSoftInputMode="adjustResize" />
+64-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:52:13-55
+65        <activity
+65-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:55:9-58:54
+66            android:name="com.yourapp.ui.chat.ChatInfoActivity"
+66-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:56:13-53
+67            android:exported="false"
+67-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:57:13-37
+68            android:theme="@style/Theme.SocialApp" />
+68-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:58:13-51
+69        <activity
+69-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:60:9-64:54
+70            android:name="com.yourapp.ui.chat.PhotoViewerActivity"
+70-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:61:13-56
+71            android:exported="false"
+71-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:62:13-37
+72            android:screenOrientation="portrait"
+72-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:63:13-49
+73            android:theme="@style/Theme.SocialApp" />
+73-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:64:13-51
+74        <activity
+74-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:66:9-70:54
+75            android:name="com.yourapp.ui.home.StoryViewerActivity"
+75-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:67:13-56
+76            android:exported="false"
+76-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:68:13-37
+77            android:screenOrientation="portrait"
+77-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:69:13-49
+78            android:theme="@style/Theme.SocialApp" />
+78-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:70:13-51
+79        <activity
+79-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:72:9-75:54
+80            android:name="com.yourapp.ui.profile.PublicProfileActivity"
+80-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:73:13-61
+81            android:exported="false"
+81-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:74:13-37
+82            android:theme="@style/Theme.SocialApp" />
+82-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:75:13-51
+83        <activity
+83-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:77:9-81:54
+84            android:name="com.yourapp.ui.search.SearchUserActivity"
+84-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:78:13-57
+85            android:exported="false"
+85-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:79:13-37
+86            android:theme="@style/Theme.SocialApp"
+86-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:81:13-51
+87            android:windowSoftInputMode="stateVisible|adjustResize" />
+87-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:80:13-68
+88        <activity
+88-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:83:9-87:54
+89            android:name="com.yourapp.ui.group.CreateGroupActivity"
+89-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:84:13-57
+90            android:exported="false"
+90-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:85:13-37
+91            android:theme="@style/Theme.SocialApp"
+91-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:87:13-51
+92            android:windowSoftInputMode="stateVisible|adjustResize" />
+92-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:86:13-68
+93        <activity
+93-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:89:9-92:54
+94            android:name="com.yourapp.MainActivity"
+94-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:90:13-41
+95            android:exported="true"
+95-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:91:13-36
+96            android:theme="@style/Theme.SocialApp" />
+96-->D:\hoc_android\project17\app\src\main\AndroidManifest.xml:92:13-51
+97
+98        <provider
+98-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+99            android:name="androidx.startup.InitializationProvider"
+99-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+100            android:authorities="com.yourapp.androidx-startup"
+100-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+101            android:exported="false" >
+101-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+102            <meta-data
+102-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+103                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+103-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+104                android:value="androidx.startup" />
+104-->[androidx.emoji2:emoji2:1.2.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\6db5aa862a49de8667f2a7b9b0bf2022\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+105            <meta-data
+105-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\adfd241d31aa0dc8d9176e9f5dfaa47e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+106                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+106-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\adfd241d31aa0dc8d9176e9f5dfaa47e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+107                android:value="androidx.startup" />
+107-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\adfd241d31aa0dc8d9176e9f5dfaa47e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+108            <meta-data
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+109                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+110                android:value="androidx.startup" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+111        </provider>
+112
+113        <uses-library
+113-->[androidx.window:window:1.0.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\1ea1c0b7cdf4f9e4361e565038f6c965\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+114            android:name="androidx.window.extensions"
+114-->[androidx.window:window:1.0.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\1ea1c0b7cdf4f9e4361e565038f6c965\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+115            android:required="false" />
+115-->[androidx.window:window:1.0.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\1ea1c0b7cdf4f9e4361e565038f6c965\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+116        <uses-library
+116-->[androidx.window:window:1.0.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\1ea1c0b7cdf4f9e4361e565038f6c965\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+117            android:name="androidx.window.sidecar"
+117-->[androidx.window:window:1.0.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\1ea1c0b7cdf4f9e4361e565038f6c965\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+118            android:required="false" />
+118-->[androidx.window:window:1.0.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\1ea1c0b7cdf4f9e4361e565038f6c965\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+119
+120        <service
+120-->[androidx.room:room-runtime:2.5.2] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\693efe1f7594cdfca965096d5e47fe06\transformed\room-runtime-2.5.2\AndroidManifest.xml:24:9-28:63
+121            android:name="androidx.room.MultiInstanceInvalidationService"
+121-->[androidx.room:room-runtime:2.5.2] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\693efe1f7594cdfca965096d5e47fe06\transformed\room-runtime-2.5.2\AndroidManifest.xml:25:13-74
+122            android:directBootAware="true"
+122-->[androidx.room:room-runtime:2.5.2] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\693efe1f7594cdfca965096d5e47fe06\transformed\room-runtime-2.5.2\AndroidManifest.xml:26:13-43
+123            android:exported="false" />
+123-->[androidx.room:room-runtime:2.5.2] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\693efe1f7594cdfca965096d5e47fe06\transformed\room-runtime-2.5.2\AndroidManifest.xml:27:13-37
+124
+125        <receiver
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+126            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+127            android:directBootAware="false"
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+128            android:enabled="true"
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+129            android:exported="true"
+129-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+130            android:permission="android.permission.DUMP" >
+130-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+131            <intent-filter>
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+132                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+132-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+133            </intent-filter>
+134            <intent-filter>
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+135                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+136            </intent-filter>
+137            <intent-filter>
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+138                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+139            </intent-filter>
+140            <intent-filter>
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+141                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+141-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+141-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\taih1\AppData\Local\Temp\gradle-home-project17\caches\transforms-3\0db8f035745ab68a2782efc838399652\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+142            </intent-filter>
+143        </receiver>
+144    </application>
+145
+146</manifest>

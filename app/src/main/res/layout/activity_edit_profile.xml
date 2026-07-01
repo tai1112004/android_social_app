@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F5"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <TextView
+            android:id="@+id/btn_edit_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingEnd="16dp"
+            android:text="Hủy"
+            android:textColor="#1877F2"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Chỉnh sửa hồ sơ"
+            android:textColor="#1C1E21"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_edit_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Lưu"
+            android:textColor="#1877F2"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="28dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:background="#FFFFFF">
+
+                <ImageView
+                    android:id="@+id/iv_edit_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:background="@drawable/bg_profile_cover_placeholder"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/btn_edit_cover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="135dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_fb_secondary_button"
+                    android:gravity="center"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="Đổi ảnh bìa"
+                    android:textColor="#1C1E21"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:layout_width="112dp"
+                    android:layout_height="112dp"
+                    android:layout_gravity="start|bottom"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:elevation="8dp"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/iv_edit_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_edit_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="U"
+                        android:textColor="@android:color/white"
+                        android:textSize="38sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/btn_edit_avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="28dp"
+                    android:background="@drawable/bg_fb_secondary_button"
+                    android:gravity="center"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="Đổi ảnh đại diện"
+                    android:textColor="#1C1E21"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_fb_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView style="@style/ProfileSectionTitle" android:text="Thông tin cơ bản" />
+                <EditText android:id="@+id/et_edit_name" style="@style/ProfileEditInput" android:hint="Tên hiển thị" android:maxLength="50" />
+                <EditText android:id="@+id/et_edit_bio" style="@style/ProfileEditInput" android:hint="Giới thiệu / bio" android:gravity="top|start" android:minLines="3" android:maxLength="150" android:inputType="textMultiLine" />
+                <TextView android:id="@+id/tv_edit_bio_counter" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="end" android:text="0/150" android:textColor="#65676B" android:textSize="12sp" />
+                <EditText android:id="@+id/et_edit_dob" style="@style/ProfileEditInput" android:hint="Ngày sinh (yyyy-MM-dd)" android:focusable="false" />
+                <EditText android:id="@+id/et_edit_gender" style="@style/ProfileEditInput" android:hint="Giới tính" android:focusable="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_fb_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView style="@style/ProfileSectionTitle" android:text="Liên hệ" />
+                <EditText android:id="@+id/et_edit_phone" style="@style/ProfileEditInput" android:hint="Số điện thoại" android:inputType="phone" />
+                <EditText android:id="@+id/et_edit_email" style="@style/ProfileEditInput" android:hint="Gmail / email" android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_fb_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView style="@style/ProfileSectionTitle" android:text="Vị trí và liên kết" />
+                <EditText android:id="@+id/et_edit_location" style="@style/ProfileEditInput" android:hint="Vị trí hiện tại" />
+                <EditText android:id="@+id/et_edit_website" style="@style/ProfileEditInput" android:hint="Link chia sẻ" android:inputType="textUri" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mạng xã hội</string>
+    <string name="action_settings">Cài đặt</string>
+
+    <!-- Auth Strings -->
+    <string name="login_title">Đăng nhập</string>
+    <string name="register_title">Đăng ký</string>
+    <string name="password_hint">Mật khẩu</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Tên đăng nhập</string>
+
+    <!-- Navigation -->
+    <string name="tab_home">Trang chủ</string>
+    <string name="tab_chat">Tin nhắn</string>
+    <string name="tab_profile">Hồ sơ</string>
+
+    <!-- Common -->
+    <string name="loading">Đang tải...</string>
+    <string name="error">Lỗi</string>
+    <string name="retry">Thử lại</string>
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy</string>
+
+    <!-- Story Viewer -->
+    <string name="story_send_message">Gửi tin nhắn</string>
+    <string name="story_default_username">Tên người dùng</string>
+    <string name="story_just_now">Vừa xong</string>
+    <string name="story_caption_placeholder">Nội dung caption...</string>
+</resources>

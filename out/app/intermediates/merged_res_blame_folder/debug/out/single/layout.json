@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_friend.xml",
+        "source": "com.yourapp-main-46:/layout/item_friend.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/dialog_comments.xml",
+        "source": "com.yourapp-main-46:/layout/dialog_comments.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_user_search.xml",
+        "source": "com.yourapp-main-46:/layout/item_user_search.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_post.xml",
+        "source": "com.yourapp-main-46:/layout/item_post.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_login.xml",
+        "source": "com.yourapp-main-46:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/dialog_create_post.xml",
+        "source": "com.yourapp-main-46:/layout/dialog_create_post.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_story.xml",
+        "source": "com.yourapp-main-46:/layout/item_story.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_public_profile.xml",
+        "source": "com.yourapp-main-46:/layout/activity_public_profile.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_conversation.xml",
+        "source": "com.yourapp-main-46:/layout/item_conversation.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_chat_info.xml",
+        "source": "com.yourapp-main-46:/layout/activity_chat_info.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/dialog_story_reply.xml",
+        "source": "com.yourapp-main-46:/layout/dialog_story_reply.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_group_friend.xml",
+        "source": "com.yourapp-main-46:/layout/item_group_friend.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_create_group.xml",
+        "source": "com.yourapp-main-46:/layout/activity_create_group.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_home.xml",
+        "source": "com.yourapp-main-46:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_register.xml",
+        "source": "com.yourapp-main-46:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_main.xml",
+        "source": "com.yourapp-main-46:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_search_user.xml",
+        "source": "com.yourapp-main-46:/layout/activity_search_user.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_photo_viewer.xml",
+        "source": "com.yourapp-main-46:/layout/activity_photo_viewer.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_message.xml",
+        "source": "com.yourapp-main-46:/layout/item_message.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_story_viewer.xml",
+        "source": "com.yourapp-main-46:/layout/activity_story_viewer.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/activity_chat.xml",
+        "source": "com.yourapp-main-46:/layout/activity_chat.xml"
+    },
+    {
+        "merged": "com.yourapp-mergeDebugResources-50:/layout/item_comment.xml",
+        "source": "com.yourapp-main-46:/layout/item_comment.xml"
+    }
+]

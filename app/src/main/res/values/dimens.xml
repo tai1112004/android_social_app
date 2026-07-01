@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="comment_card_indent_reply">10dp</dimen>
+    <dimen name="comment_card_top_gap_normal">6dp</dimen>
+    <dimen name="comment_card_top_gap_reply">8dp</dimen>
+    <dimen name="comment_reply_block_start">10dp</dimen>
+    <dimen name="comment_reply_block_padding_horizontal">10dp</dimen>
+    <dimen name="comment_reply_block_padding_vertical">8dp</dimen>
+    <dimen name="comment_reply_tag_size">11sp</dimen>
+    <dimen name="comment_reply_text_size">12sp</dimen>
+</resources>
