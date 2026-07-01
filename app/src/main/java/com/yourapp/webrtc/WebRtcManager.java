@@ -250,6 +250,10 @@ public class WebRtcManager {
         }
     }
 
+    public boolean isLocalAudioReady() {
+        return localAudioTrack != null && localAudioTrack.enabled();
+    }
+
     public void toggleSpeaker(boolean useSpeaker, Context context) {
         AudioManager manager = audioManager != null ? audioManager : (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         if (manager != null) {

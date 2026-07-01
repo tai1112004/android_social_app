@@ -3,13 +3,17 @@ package com.yourapp.ui.call;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.yourapp.R;
 import com.yourapp.call.CallForegroundService;
 import com.yourapp.call.CallRuntime;
@@ -130,7 +134,15 @@ public class OutgoingCallActivity extends AppCompatActivity {
             toastAndFinish("Khong tim thay nguoi nhan cuoc goi");
             return;
         }
-        startCall();
+        ensureMicPermissionAndStart();
+    }
+
+    private void ensureMicPermissionAndStart() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+            startCall();
+            return;
+        }
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQ_RECORD_AUDIO_OUTGOING);
     }
 
     private void startCall() {
@@ -437,12 +449,20 @@ public class OutgoingCallActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQ_RECORD_AUDIO_OUTGOING) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                recreate();
+                startCall();
             } else {
-                Toast.makeText(this, "Can quyen micro de goi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Can quyen micro de goi", Toast.LENGTH_LONG).show();
+                openAppPermissionSettings();
                 finish();
             }
         }
+    }
+
+    private void openAppPermissionSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setData(Uri.fromParts("package", getPackageName(), null));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private void redirectToLogin() {

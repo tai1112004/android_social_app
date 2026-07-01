@@ -3,11 +3,15 @@ package com.yourapp.ui.call;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.yourapp.R;
 import com.yourapp.call.CallForegroundService;
 import com.yourapp.call.CallRuntime;
@@ -115,6 +119,9 @@ public class IncomingCallActivity extends AppCompatActivity {
         if (accepted) {
             return;
         }
+        if (!ensureMicPermissionForAnswer()) {
+            return;
+        }
         accepted = true;
         if (sessionId == null || sessionId.isEmpty()) {
             finish();
@@ -149,6 +156,14 @@ public class IncomingCallActivity extends AppCompatActivity {
                 runOnUiThread(() -> Toast.makeText(IncomingCallActivity.this, message, Toast.LENGTH_SHORT).show());
             }
         });
+
+        if (!webRtcManager.isLocalAudioReady()) {
+            Toast.makeText(this, "Mic chua san sang, vui long kiem tra quyen micro", Toast.LENGTH_LONG).show();
+            openAppPermissionSettings();
+            accepted = false;
+            webRtcManager.release();
+            return;
+        }
 
         SignalingService signalingService = new SignalingService(
                 Constants.getWsUrl(),
@@ -321,9 +336,30 @@ public class IncomingCallActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQ_RECORD_AUDIO_ANSWER && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            answerCall();
+        if (requestCode == REQ_RECORD_AUDIO_ANSWER) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                answerCall();
+            } else {
+                Toast.makeText(this, "Can quyen micro de tra loi cuoc goi", Toast.LENGTH_LONG).show();
+                openAppPermissionSettings();
+                accepted = false;
+            }
         }
+    }
+
+    private boolean ensureMicPermissionForAnswer() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQ_RECORD_AUDIO_ANSWER);
+        return false;
+    }
+
+    private void openAppPermissionSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setData(Uri.fromParts("package", getPackageName(), null));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private String safeMessage(Throwable t) {
