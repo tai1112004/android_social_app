@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- ================================================================= -->
+<!-- GIAO DIỆN MÀN HÌNH CHI TIẾT CUỘC TRÒ CHUYỆN (activity_chat.xml)      -->
+<!-- Xuất hiện khi người dùng chọn một cuộc hội thoại từ màn hình Home.  -->
+<!-- Chứa:                                                             -->
+<!-- 1. AppBarLayout: Tên đối phương, Avatar, trạng thái và Nút gọi điện-->
+<!-- 2. RecyclerView (rv_messages): Khu vực hiển thị bong bóng tin nhắn -->
+<!-- 3. message_input_bar (LinearLayout): Thanh gõ tin nhắn dưới cùng  -->
+<!-- ================================================================= -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"

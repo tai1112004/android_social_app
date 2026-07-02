@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- ================================================================= -->
+<!-- GIAO DIỆN MÀN HÌNH XEM TIN - STORIES (activity_story_viewer.xml)    -->
+<!-- Hiện lên khi người dùng nhấn vào một vòng tròn Story ở màn hình chính.-->
+<!-- Chứa:                                                             -->
+<!-- 1. ImageView (iv_story_content): Ảnh của Story                    -->
+<!-- 2. ProgressBar (pb_story): Thanh chạy thời gian (chạy trong 60s)    -->
+<!-- 3. Avatar và tên tác giả ở góc trái phía trên                     -->
+<!-- 4. btn_story_reply: Ô click để phản hồi nhanh bằng văn bản        -->
+<!-- 5. Các emoji phản ứng nhanh: ❤️ (Heart), 😂 (Laugh), 😮 (Wow)      -->
+<!-- ================================================================= -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"

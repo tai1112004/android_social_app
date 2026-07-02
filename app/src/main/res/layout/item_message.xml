@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- ================================================================= -->
+<!-- GIAO DIỆN BONG BÓNG TIN NHẮN CHAT (item_message.xml)                 -->
+<!-- Thuộc RecyclerView (rv_messages) trong màn hình Chat chi tiết.      -->
+<!-- Chứa:                                                             -->
+<!-- 1. tv_message_avatar: Avatar của người gửi (chỉ hiện phía bên trái) -->
+<!-- 2. message_bubble (LinearLayout): Bong bóng chứa nội dung tin nhắn  -->
+<!-- 3. tv_message_sender: Tên người gửi tin nhắn (chỉ hiện trong nhóm)  -->
+<!-- 4. layout_message_reply: Khu vực preview nếu tin nhắn là trả lời    -->
+<!--    tin/story của ai đó                                             -->
+<!-- 5. tv_message_content: Nội dung tin nhắn văn bản                  -->
+<!-- 6. media_frame: Khung xem trước hình ảnh/video đính kèm            -->
+<!-- 7. tv_message_time: Thời gian gửi tin nhắn                        -->
+<!-- 8. tv_message_reaction: Icon cảm xúc nổi lên ở góc tin nhắn       -->
+<!-- ================================================================= -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/message_row"
     android:layout_width="match_parent"

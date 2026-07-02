@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- ================================================================= -->
+<!-- GIAO DIỆN MỖI KHUNG BÀI VIẾT TRÊN BẢNG TIN (item_post.xml)           -->
+<!-- Dùng cho danh sách bài đăng (rv_feed) ở tab Feed và rv_profile_posts  -->
+<!-- ở tab Profile.                                                    -->
+<!-- Chứa:                                                             -->
+<!-- 1. Header: Avatar (iv_post_avatar) + Tên tác giả (tv_post_author)  -->
+<!--    + Thời gian đăng bài (tv_post_time)                            -->
+<!-- 2. Body: Nội dung text bài viết (tv_post_content)                 -->
+<!-- 3. Media: Hình ảnh đính kèm bài viết (iv_post_media) (nếu có)      -->
+<!-- 4. Footer: Nút Thích (btn_post_like) hiển thị số lượt thích và     -->
+<!--    Nút Bình luận (btn_post_comment) hiển thị số lượt bình luận.    -->
+<!-- ================================================================= -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
