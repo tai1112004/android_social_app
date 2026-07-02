@@ -191,6 +191,10 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
+            <!-- ============================================================= -->
+            <!-- 1️⃣ TAB TIN NHẮN (CHATS & STORIES)                           -->
+            <!-- Chứa thanh tìm kiếm (ẩn), thanh Stories và danh sách chat    -->
+            <!-- ============================================================= -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/panel_chats"
                 android:layout_width="match_parent"
@@ -343,6 +347,10 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- ============================================================= -->
+            <!-- 2️⃣ TAB BẠN BÈ (FRIENDS)                                      -->
+            <!-- Chứa bộ lọc tab (Bạn bè, Lời mời, Đã gửi, Gợi ý) và list bạn  -->
+            <!-- ============================================================= -->
             <LinearLayout
                 android:id="@+id/panel_friends"
                 android:layout_width="match_parent"
@@ -437,7 +445,11 @@
 
             </LinearLayout>
 
-                        <androidx.core.widget.NestedScrollView
+                        <!-- ============================================================= -->
+            <!-- 3️⃣ TAB TRANG CÁ NHÂN (PROFILE)                              -->
+            <!-- Chứa ảnh bìa, avatar, thông tin bio, thống kê & bài viết cá nhân-->
+            <!-- ============================================================= -->
+            <androidx.core.widget.NestedScrollView
                 android:id="@+id/panel_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -769,6 +781,10 @@
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 
+            <!-- ============================================================= -->
+            <!-- 4️⃣ TAB BẢNG TIN (FEED)                                       -->
+            <!-- Chứa khung đăng bài viết mới (Compose Box) và danh sách bài   -->
+            <!-- ============================================================= -->
             <LinearLayout
                 android:id="@+id/panel_feed"
                 android:layout_width="match_parent"
@@ -885,6 +901,10 @@
 
         </FrameLayout>
 
+        <!-- ============================================================= -->
+        <!-- THANH ĐIỀU HƯỚNG DƯỚI CÙNG (BOTTOM NAVIGATION BAR)             -->
+        <!-- Chuyển đổi qua lại giữa 4 Tabs (Chats, Friends, Feed, Profile) -->
+        <!-- ============================================================= -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_home"
             android:layout_width="match_parent"
@@ -897,6 +917,10 @@
 
     </LinearLayout>
 
+    <!-- ============================================================= -->
+    <!-- NÚT FAB NỔI (Hành động nhanh tìm bạn bè)                     -->
+    <!-- Hiển thị đè lên trên góc dưới bên phải                        -->
+    <!-- ============================================================= -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_home"
         android:layout_width="wrap_content"
