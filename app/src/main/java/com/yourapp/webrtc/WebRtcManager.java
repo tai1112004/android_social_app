@@ -3,6 +3,7 @@ package com.yourapp.webrtc;
 import android.content.Context;
 import android.media.AudioManager;
 import android.util.Log;
+import com.yourapp.util.BackendConfig;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -95,6 +96,10 @@ public class WebRtcManager {
         }
         PeerConnection.RTCConfiguration rtcConfig = new PeerConnection.RTCConfiguration(getIceServers());
         rtcConfig.sdpSemantics = PeerConnection.SdpSemantics.UNIFIED_PLAN;
+        rtcConfig.continualGatheringPolicy = PeerConnection.ContinualGatheringPolicy.GATHER_CONTINUALLY;
+        rtcConfig.tcpCandidatePolicy = PeerConnection.TcpCandidatePolicy.ENABLED;
+        rtcConfig.iceTransportsType = PeerConnection.IceTransportsType.ALL;
+        rtcConfig.iceCandidatePoolSize = 4;
         peerConnection = factory.createPeerConnection(rtcConfig, new PeerConnection.Observer() {
             @Override
             public void onSignalingChange(PeerConnection.SignalingState signalingState) { }
@@ -316,19 +321,63 @@ public class WebRtcManager {
     public PeerConnection getPeerConnection() {
         return peerConnection;
     }
+    // ---------------------------------------------------------------
+    // Metered.ca TURN credentials – thay thế khi credential hết hạn
+    // ---------------------------------------------------------------
+    private static final String METERED_USERNAME = "20b7a056d1c21652783fd533";
+    private static final String METERED_CREDENTIAL = "1Jpw8fY9wA2v1G+T";
 
     private List<PeerConnection.IceServer> getIceServers() {
         List<PeerConnection.IceServer> servers = new ArrayList<>();
-        servers.add(PeerConnection.IceServer.builder("stun:stun.l.google.com:19302").createIceServer());
-        servers.add(PeerConnection.IceServer.builder("stun:stun1.l.google.com:19302").createIceServer());
-        servers.add(PeerConnection.IceServer.builder("turn:openrelay.metered.ca:80")
-                .setUsername("openrelayproject")
-                .setPassword("openrelayproject")
+
+        // STUN metered.ca
+        servers.add(PeerConnection.IceServer.builder("stun:stun.relay.metered.ca:80")
                 .createIceServer());
-        servers.add(PeerConnection.IceServer.builder("turn:openrelay.metered.ca:443?transport=tcp")
-                .setUsername("openrelayproject")
-                .setPassword("openrelayproject")
+
+        // STUN Google dự phòng
+        servers.add(PeerConnection.IceServer.builder("stun:stun.l.google.com:19302")
                 .createIceServer());
+
+        // TURN UDP port 80
+        servers.add(PeerConnection.IceServer.builder("turn:global.relay.metered.ca:80")
+                .setUsername(METERED_USERNAME)
+                .setPassword(METERED_CREDENTIAL)
+                .createIceServer());
+
+        // TURN TCP port 80 (xuyên firewall chặn UDP)
+        servers.add(PeerConnection.IceServer.builder("turn:global.relay.metered.ca:80?transport=tcp")
+                .setUsername(METERED_USERNAME)
+                .setPassword(METERED_CREDENTIAL)
+                .createIceServer());
+
+        // TURN UDP port 443
+        servers.add(PeerConnection.IceServer.builder("turn:global.relay.metered.ca:443")
+                .setUsername(METERED_USERNAME)
+                .setPassword(METERED_CREDENTIAL)
+                .createIceServer());
+
+        // TURNS TLS port 443 (fallback mạnh nhất, vượt qua hầu hết firewall)
+        servers.add(PeerConnection.IceServer.builder("turns:global.relay.metered.ca:443?transport=tcp")
+                .setUsername(METERED_USERNAME)
+                .setPassword(METERED_CREDENTIAL)
+                .createIceServer());
+
+        // Nếu user đã cấu hình TURN tùy chỉnh thêm từ Settings, gắn thêm vào
+        String customHost = BackendConfig.getTurnHost();
+        String customUsername = BackendConfig.getTurnUsername();
+        String customPassword = BackendConfig.getTurnPassword();
+        if (customHost != null && !customHost.trim().isEmpty()) {
+            PeerConnection.IceServer.Builder turnBuilder = PeerConnection.IceServer.builder(customHost.trim());
+            if (customUsername != null && !customUsername.trim().isEmpty()) {
+                turnBuilder.setUsername(customUsername.trim());
+            }
+            if (customPassword != null && !customPassword.trim().isEmpty()) {
+                turnBuilder.setPassword(customPassword.trim());
+            }
+            servers.add(turnBuilder.createIceServer());
+        }
+
+        Log.d(TAG, "ICE servers configured: " + servers.size() + " servers (including metered.ca TURN)");
         return servers;
     }
 
