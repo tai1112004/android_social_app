@@ -49,7 +49,7 @@ import retrofit2.Response;
 
 public class StoryViewerActivity extends AppCompatActivity {
 
-    private static final long STORY_DURATION_MS = 5000;
+    private static final long STORY_DURATION_MS = 60000; // 60 giây
 
     private ImageView ivStoryContent;
     private ProgressBar pbStory;
@@ -126,12 +126,26 @@ bindViews();
         btnViewerDelete.setOnClickListener(v -> deleteStory());
         btnViewerVolume.setOnClickListener(v -> toggleVolume());
 
+        // Nút reply và reaction – pause timer khi tương tác
+        btnStoryReply.setOnClickListener(v -> showStoryReplyDialog());
+        btnStoryHeart.setOnClickListener(v -> sendQuickReaction("❤️"));
+        btnStoryLaugh.setOnClickListener(v -> sendQuickReaction("😂"));
+        btnStoryWow.setOnClickListener(v -> sendQuickReaction("😮"));
+
         btnViewerClose.bringToFront();
         btnViewerDelete.bringToFront();
         btnViewerVolume.bringToFront();
+        btnStoryReply.bringToFront();
+        btnStoryHeart.bringToFront();
+        btnStoryLaugh.bringToFront();
+        btnStoryWow.bringToFront();
         btnViewerClose.setElevation(24f);
         btnViewerDelete.setElevation(24f);
         btnViewerVolume.setElevation(24f);
+        btnStoryReply.setElevation(24f);
+        btnStoryHeart.setElevation(24f);
+        btnStoryLaugh.setElevation(24f);
+        btnStoryWow.setElevation(24f);
     }
     private void bindViews() {
         ivStoryContent = findViewById(R.id.iv_story_content);

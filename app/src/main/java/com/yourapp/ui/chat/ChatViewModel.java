@@ -90,7 +90,12 @@ public class ChatViewModel extends ViewModel {
         }
 
         sending.setValue(true);
-        messageRepository.sendMessage(conversationId, request).observeForever(result -> {
+        androidx.lifecycle.LiveData<AuthRepository.Result<Message>> liveData =
+                messageRepository.sendMessage(conversationId, request);
+        androidx.lifecycle.Observer<AuthRepository.Result<Message>>[] observerRef = new androidx.lifecycle.Observer[1];
+        observerRef[0] = result -> {
+            if (result == null) return;
+            liveData.removeObserver(observerRef[0]);
             sending.postValue(false);
             if (result instanceof AuthRepository.Result.Success) {
                 AuthRepository.Result.Success<Message> success =
@@ -101,7 +106,8 @@ public class ChatViewModel extends ViewModel {
                         (AuthRepository.Result.Error<Message>) result;
                 error.postValue(err.message);
             }
-        });
+        };
+        liveData.observeForever(observerRef[0]);
     }
 
     public void deleteMessage(Message original) {
@@ -126,13 +132,16 @@ public class ChatViewModel extends ViewModel {
         if (original == null || original.getId() == null || reaction == null || reaction.isEmpty()) {
             return;
         }
-        messageRepository.reactToMessage(original.getId(), reaction).observeForever(result -> {
+        androidx.lifecycle.LiveData<AuthRepository.Result<Message>> liveData =
+                messageRepository.reactToMessage(original.getId(), reaction);
+        androidx.lifecycle.Observer<AuthRepository.Result<Message>>[] observerRef = new androidx.lifecycle.Observer[1];
+        observerRef[0] = result -> {
+            if (result == null) return;
+            liveData.removeObserver(observerRef[0]);
             if (result instanceof AuthRepository.Result.Success) {
                 Message updatedMessage = ((AuthRepository.Result.Success<Message>) result).data;
                 List<Message> current = messages.getValue();
-                if (current == null) {
-                    return;
-                }
+                if (current == null) return;
                 List<Message> updated = new ArrayList<>(current);
                 for (int i = 0; i < updated.size(); i++) {
                     Message item = updated.get(i);
@@ -145,7 +154,8 @@ public class ChatViewModel extends ViewModel {
             } else if (result instanceof AuthRepository.Result.Error) {
                 error.postValue(((AuthRepository.Result.Error<Message>) result).message);
             }
-        });
+        };
+        liveData.observeForever(observerRef[0]);
     }
 }
 
